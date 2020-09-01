@@ -26,12 +26,7 @@ class Cryptograph {
     }
 
     public function encryptValue($value){
-        $nonce  = Sodium\randombytes_buf(Sodium\CRYPTO_SECRETBOX_NONCEBYTES);
-        $vars   = $value;
-        $pass   = Array();
-        $pass[] = Sodium\bin2hex(Sodium\crypto_secretbox($vars, $nonce, $this->key));
-        $pass[] = Sodium\bin2hex($nonce);
-        $pass[] = 'end';
+        // deleted
     
         $encrypted = implode('|', $pass);
 
