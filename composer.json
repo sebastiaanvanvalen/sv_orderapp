@@ -1,0 +1,13 @@
+{
+	"name": "baxxie/senv-api",
+    "description": "This API is used for creating a pickup-website for cafe smit en voogt.",
+    "require": {
+		"webmozart/assert"          : "^1.3",
+		"indigophp/hash-compat"     : "^1.1",
+        "paragonie/sodium_compat"   : "^1.12",
+        "paragonie/random_compat"   : "2.0.18"
+    },
+    "require-dev": {
+        "guzzlehttp/guzzle" : "^6.3.3"
+    }
+}

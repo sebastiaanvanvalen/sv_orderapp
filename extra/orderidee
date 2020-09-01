@@ -1,0 +1,90 @@
+soorten orders na opvragen van alle orders:
+* verlopen: "pickuptime ligt in het verleden"
+
+Stmt = "SELECT ALL from allorders"
+
+orders die vóór vandaag zijn binnengekomen en vóór vandaag moesten worden opgehaald:
+- niet ingevoerd (verlopen)                                 1.
+- niet ingevoerd + gecanceled door de klant                 2.
+- niet ingevoerd + gecanceled door het cafe                 3.  
+- ingevoerd                                                 4.
+- ingevoerd + gecanceled door de klant                      5.
+- ingevoerd + gecanceled door het cafe                      6.
+
+
+orders die vóór vandaag zijn binnengekomen en ná vandaag worden opgehaald:
+** LETOP deze orders kunnen nooit zijn ingevoerd!!!**
+- niet ingevoerd + een pickuptijd in de toekomst            7.
+- niet ingevoerd + gecanceled door de klant                 8.
+- niet ingevoerd + gecanceled door het cafe                 9.
+
+
+orders die vóór vandaag zijn binnengekomen en vandaag worden opgehaald:
+** LETOP deze orders kunnen vóór vandaag niet al zijn ingevoerd!!!**
+- niet ingevoerd + een pickuptijd in de toekomst            10.
+- niet ingevoerd + een pickuptijd die is verlopen           11.
+- niet ingevoerd + gecanceled door de klant                 12.
+- niet ingevoerd + gecanceled door het cafe                 13.
+- ingevoerd + een pickuptijd in de toekomst                 14.
+- ingevoerd + een pickuptijd die is verlopen                15.
+- ingevoerd + gecanceled door de klant                      16.
+- ingevoerd + gecanceled door het cafe                      17.
+- ingevoerd + niet opgehaald                                17a.
+
+
+
+order die vandaag zijn binnengekomen en vandaag worden opgehaald:
+- niet ingevoerd + een pickuptijd in de toekomst            18.
+- niet ingevoerd + een pickuptijd die is verlopen           19.
+- niet ingevoerd + gecanceled door de klant                 20.
+- niet ingevoerd + gecanceled door het cafe                 21.
+- ingevoerd + een pickuptijd in de toekomst                 22. 
+- ingevoerd + een pickuptijd die is verlopen                24.
+- ingevoerd + gecanceled door de klant                      25.
+- ingevoerd + gecanceled door het cafe                      26.
+- ingevoerd + niet opgehaald                                26a.
+
+
+orders die vandaag zijn binnengekomen en ná vandaag worden opgehaald:
+- niet ingevoerd + een pickuptijd in de toekomst            27.
+- niet ingevoerd + gecanceled door de klant                 28.
+- niet ingevoerd + gecanceled door het cafe                 29.
+
+
+pickuptijd = verleden, verlopen, vandaag, toekomst
+gecanceled = ja / nee
+    - door klant gecanceled = ja / nee
+    - door cafe gecanceled  = ja / nee
+ingevoerd  = ja / nee
+
+
+queries:
+SELECT ALL FROM allorders WHERE $date = $today AND $time = <= $now
+    JS:
+        - if status = 0 => class="today expired unread"
+        - if status = 1 => class="today expired read"
+        - if status = 2 => class="today expired canceled-cafe 
+        - if status = 3 => class="today expired canceled-guest"
+        - if status = 4 => class="today expired no-show"
+
+
+SELECT ALL FROM allorders WHERE $date = $today AND $time = >= $now
+    JS:
+        - if status = 0 => class="today not-expired unread"
+        - if status = 1 => class="today not-expired read"
+        - if status = 2 => class="today not-expired canceled-cafe 
+        - if status = 3 => class="today not-expired canceled-guest"
+        - if status = 4 => *not-possible*
+
+SELECT ALL FROM allorders WHERE $date > $today
+    JS:
+        - if status = 0 => class="future not-expired unread"
+        - if status = 1 => *not-possible*
+        - if status = 2 => class="future not-expired canceled-cafe 
+        - if status = 3 => class="future not-expired canceled-guest"
+        - if status = 4 => *not-possible*
+
+
+
+
+
