@@ -1,6 +1,6 @@
 <?php
 // // oude instellingen
-define('ROOT_URL', 'http://localhost/testing/testsmitenvoogt/index.php');
+define('ROOT_URL', '');
 define('DB_HOST' , '');
 define('DB_USER' , '');
 define(';
