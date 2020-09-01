@@ -18,10 +18,6 @@ class Cryptograph {
         $value     = $vars[0];
         $nonce     = $vars[1];
         
-        /**
-         * TODO : error handling
-         */
-
         return Sodium\crypto_secretbox_open(Sodium\hex2bin($value), Sodium\hex2bin($nonce), $this->key);
     }
 
