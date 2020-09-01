@@ -2,7 +2,7 @@
 
 try{
     // oude instellingen
-    // $db = new PDO('mysql:unix_socket=/var/lib/mysql/prod/mysql.sock;dbname='.DB_NAME.';charset=utf8', DB_USER, DB_PASS);
+    // $db = new PDO();
     // $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
