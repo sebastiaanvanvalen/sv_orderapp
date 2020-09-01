@@ -24,9 +24,9 @@ There is also the issue with timeFrames. The application takes into account that
 ## choices
 Haven't looked back on this project since it was finished in march 2020 I know I would make a lot of different choices the next time.
 
-javascript vs php
+javascript vs php <br>
 A lot of html is generated with javaScript. Now I'm more used to generate it in php and within the server. Keeping things more behind the scene.
 
-flatpickr/bootstrap
+flatpickr/bootstrap <br>
 Not being familiar with many libraries I'm happy to have used bootstrap and a datapicker.
 
