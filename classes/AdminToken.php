@@ -8,10 +8,10 @@ class AdminToken{
         $_SESSION['PASS'] = 'Buf6klDCo0Fjktr32Wdxcik0dwfj976'; 
         $timestamp   = time() + (7 * 24 * 60);
         $passphrase  = $_SESSION['PASS'];
-        $passphrase .= 'Middelmatig87Kringloopwinkel'; 
-        $passphrase .= $timestamp;
-        $secret      = 'chefsspecialtaugemayoburger';
-        $algo        = 'sha512';
+        $passphrase .= ''; 
+        $passphrase .= ;
+        $secret      = '';
+        $algo        = '';
 
         return bin2hex(hash_hmac($algo, $passphrase, $secret, true)) . '|' .  $timestamp;
     }
@@ -19,10 +19,10 @@ class AdminToken{
     public function check($key){
         $parts = explode('|', substr($key, 7));
         $passphrase  = $_SESSION['PASS'];
-        $passphrase .= 'Middelmatig87Kringloopwinkel';
-        $passphrase .= $parts[1];
-        $secret      = 'chefsspecialtaugemayoburger';
-        $algo        = 'sha512';
+        $passphrase .= '';
+        $passphrase .= [1];
+        $secret      = '';
+        $algo        = '';
 
         try{
             if (!hash_equals(hex2bin($parts[0]), hash_hmac($algo, $passphrase, $secret, true))) {
