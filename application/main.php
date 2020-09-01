@@ -15,9 +15,9 @@ if(!empty($_POST)){
 
 // keep the current order of the lines below!
 
-include("../classes/CustomException.php");
-include("../classes/Cryptograph.php");
-include("../classes/TokenHandler.php");
+include("../classes/");
+include("../classes/");
+include("../classes/");
 
 $tokenHandler = new TokenHandler();
 $tokenHandler->chooseType($reqHeaders['tokenType'], $reqHeaders['Authorization']);
@@ -25,37 +25,37 @@ $cryptograph  = new Cryptograph(CRYPTO_KEY);
 
 try {
     switch ($reqHeaders['switchkey']) {
-        case "captcha":
+        case "":
             include("../include/captcha.php");
             break;
-        case "getproducts":
+        case "":
             include("../sql/getProducts.php");
             break;
-        case "placeorder":
+        case "":
             include("../sql/placeOrder.php");
             break;
-        case "getorders":
+        case "":
             include("../sql/om.getOrders.php");
             break;
-        case "getorderdetails":
+        case "":
             include("../sql/om.getOrderDetails.php");
             break;
-        case "updateorder":
+        case "":
             include("../sql/om.updateStatus.php");
             break;
-        case "sendmail":
+        case "":
             include("communication/mailClientConfirmation.php");
             break;
-        case "checkcancelinterval":
+        case "":
             include("../sql/checkCancelInterval.php");
             break;
-        case "cancelorder":
+        case "":
             include("../sql/clientCancel.php");
             break;
-        case "getStopStatus":
+        case "":
             include("../sql/getStopStatus.php");
             break;
-        case "stop":
+        case "":
             include("../sql/stop.php");
             break;
     }
